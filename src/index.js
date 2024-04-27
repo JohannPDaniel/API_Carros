@@ -72,8 +72,6 @@ app.post("/carro", (request, response) => {
 });
 
 
-  
-
 // -------------------------- Ler Carro --------------------------
 
 // http://localhost:8080/carro
@@ -232,7 +230,6 @@ app.post('/signup', async (request, response) => {
         return response.status(500).json({ mensagem: "Erro interno do servidor." });
     }
 });
-
   
   // ------------------- logar uma pessoa usuária -----------------
   // http://localhost:8080/login
