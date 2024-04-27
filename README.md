@@ -21,7 +21,19 @@ do carro criado.
 
 - Manejo de Erros:
 
-Há blocos try-catch para capturar exceções e retornar um erro HTTP 500 se algo
-der errado durante a operação
- 
-[Para acessar a  documentação da API clique aqui](https://documenter.getpostman.com/view/34269147/2sA3Bt3puM)
+Há blocos try-catch para capturar exceções e retornar um erro HTTP 500 se algo der errado durante a operação
+
+<a href="https://documenter.getpostman.com/view/34269147/2sA3Bt3puM">
+Para acessar a documentação da API clique aqui
+</a>
+
+### Técnologias usadas na API:
+
+<img src="./images/javaScript.jpg" width="110px"/>
+<img src="./images/nodeJs.jpg" width="110px" height="32px">
+<img src="./images//express.jpg" width="110px" height="32px">
+<img src="./images/vsCode.jpg" width="140px" height="32px">
+<img src="./images/git.jpg" width="110px" height="32px">
+
+
+
