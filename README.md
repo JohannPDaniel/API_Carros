@@ -23,7 +23,7 @@ do carro criado.
 
 Há blocos try-catch para capturar exceções e retornar um erro HTTP 500 se algo der errado durante a operação
 
-<a href="https://documenter.getpostman.com/view/34269147/2sA3BuW8vo">
+<a href="https://documenter.getpostman.com/view/34269147/2sA3BuW8vo" target="_blank">
 Para acessar a documentação da API clique aqui
 </a>
 
