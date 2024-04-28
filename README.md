@@ -28,7 +28,14 @@ Para acessar a documentação da API clique aqui
 </a>
 
 ### Técnologias usadas na API:
-   
-    <img src="./images/javaScript.jpg" width="110px"/> <img src="./images/nodeJs.jpg" width="110px" height="32px"> <img src="./images//express.jpg" width="110px" height="32px">
-    <img src="./images/vsCode.jpg" width="140px" height="32px"><img src="./images/git.jpg" width="110px" height="32px">
-    
+
+<div style="display: flex; gap: 10px;">
+  <img src="./images/javaScript.jpg" style="width: 110px; height: auto;" alt="JavaScript">
+  <img src="./images/nodeJs.jpg" style="width: 110px; height: 32px;" alt="Node.js">
+  <img src="./images/express.jpg" style="width: 110px; height: 32px;" alt="Express.js">
+  <img src="./images/vsCode.jpg" style="width: 140px; height: 32px;" alt="VS Code">
+  <img src="./images/git.jpg" style="width: 75px; height: 32px;" alt="Git">
+</div>
+
+
+
