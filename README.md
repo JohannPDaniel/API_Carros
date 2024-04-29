@@ -36,7 +36,7 @@ Para acessar a documentação da API clique aqui
   <img src="./images/nodeJs.jpg" style="width: 110px; height: 32px;" alt="Node.js">
   <img src="./images/express.jpg" style="width: 110px; height: 32px;" alt="Express.js">
   <img src="./images/vsCode.jpg" style="width: 140px; height: 32px;" alt="VS Code">
-  <img src="./images/git.jpg" style="width: 75px; height: 32px;" alt="Git">
+  <img src="./images/git.jpg" style="width: 65px; height: 32px;" alt="Git">
 </div>
 
 
