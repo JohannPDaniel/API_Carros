@@ -60,7 +60,7 @@ Para acessar a documentação da API clique aqui
 
   <img src="https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white" style="width: 110px; height: 32px;" alt="Postman" title="Postman">
   
-  <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" style="width: 140px; height: 32px;" alt="VS Code" title="VS Code">
+  <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" style="width: 100px; height: 32px;" alt="VS Code" title="VS Code">
   
   <img src="https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=Git&logoColor=white" style="width: 65px; height: 32px;" alt="Git" title="Git">
 
