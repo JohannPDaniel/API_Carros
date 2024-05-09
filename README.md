@@ -1,4 +1,3 @@
-
 # API_Carros
  
 Esta API é uma aplicação backend que gerencia registros de carros e autenticação de usuários. Aqui está um resumo do que ela faz:
