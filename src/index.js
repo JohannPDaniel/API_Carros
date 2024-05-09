@@ -17,11 +17,90 @@ let idDinamico = 1
 let admins = []
 let proxAdmin = 1
 
+// ------------------- Criar uma pessoa usuária ----------------------
+// http://localhost:8080/signup
+
+app.post('/signup', async (request, response) => {
+    try {
+        const { email, senhaDigitada } = request.body;
+
+        if (!email || email.trim() === "") {
+            return response.status(400).json({ mensagem: "Favor inserir um email válido" });
+        }
+    
+        if (!senhaDigitada || Number(senhaDigitada.trim() === "")) {
+            return response.status(400).json({ mensagem: "Favor inserir uma senha válida" });
+        }
+    
+        const verificarEmail = admins.find((admin) => admin.email === email);
+    
+        if (verificarEmail) {
+            return response.status(400).json({ mensagem: "Email já cadastrado no nosso banco de dados" });
+        }
+    
+        const senhaCriptografada = await bcrypt.hash(senhaDigitada, 10);
+    
+        const Administrador = {
+            id: proxAdmin,
+            email: email, 
+            senhaDigitada: senhaCriptografada 
+        };
+        
+        admins.push(Administrador);
+        proxAdmin++;
+    
+        return response.status(201).json({ 
+            mensagem: `Pessoa administradora com email ${email} cadastrada com sucesso!`,
+        });
+            
+    } catch (error) {
+        console.error("Erro ao processar cadastro:", error);
+        return response.status(500).json({ mensagem: "Erro interno do servidor." });
+    }
+});
+
+// ------------------- logar uma pessoa usuária -----------------
+// http://localhost:8080/login
+
+app.post('/login', async (request, response) => {
+    try {
+        const { email, senha } = request.body;
+  
+        if (!email || email.trim() === "") {
+            return response.status(400).json({ mensagem: 'Favor inserir um email válido' });
+        }      
+
+        if (!senha || senha.trim() === "") {
+            return response.status(400).json({ mensagem: 'Favor inserir uma senha válida' });
+        }
+
+        const admin = admins.find(admin => admin.email === email);
+
+        if (!admin) {
+            return response.status(400).json({ mensagem: 'Credenciais inválidas' });
+        }
+
+        const senhaMatches = await bcrypt.compare(senha, admin.senhaDigitada);
+    
+        if (!senhaMatches) {
+            return response.status(400).json({ mensagem: 'Credenciais inválidas' });
+        }
+
+        return response.status(200).json({
+            mensagem: `Pessoa com email ${email} foi logada com sucesso! Seja bem-vinde!`,
+            email: email,
+            loginStatus: 'Success'
+        });
+
+    } catch (error) {
+        console.error("Erro ao processar login:", error);
+        return response.status(500).json({ mensagem: "Erro interno do servidor." });
+    }
+});
+
 //--------------------- Criar Carro ----------------------------
 
 // http://localhost:8080/carro
-
-// https://api-carros-2.onrender.com/carro
 
 app.post("/carro", (request, response) => {
     try {
@@ -71,11 +150,8 @@ app.post("/carro", (request, response) => {
     }
 });
 
-
 // -------------------------- Ler Carro --------------------------
-
 // http://localhost:8080/carro
-
 app.get("/carro", (request,response) => {
     try {
         if(veiculos.length === 0){
@@ -93,7 +169,6 @@ app.get("/carro", (request,response) => {
 
 // ---------------------Filtrar carro -----------------
 // http://localhost:8080/veiculo
-
 app.get("/veiculo", (request, response) => {
     try {
         const marca = request.body.marca
@@ -121,7 +196,6 @@ app.get("/veiculo", (request, response) => {
 
 // --------------- Atualizar Veiculo ------------------------
 // http://localhost:8080/carro/:idBuscado
-
 app.put("/carro/:idBuscado", (request, response) => {
     try {
         const idBuscado = Number(request.params.idBuscado);
@@ -161,11 +235,9 @@ app.put("/carro/:idBuscado", (request, response) => {
         return response.status(500).json({ mensagem: "Erro interno do servidor." });
     }
 });
-
   
 // ----------------- Remover veículo ----------------------------
 // http://localhost:8080/carro/:idBuscado
-
 app.delete("/carro/:idBuscado", (request,response) => {
     try {
         const idBuscado = Number(request.params.idBuscado)
@@ -189,87 +261,6 @@ app.delete("/carro/:idBuscado", (request,response) => {
 
 })
 
-// ------------------- Criar uma pessoa usuária ----------------------
-// http://localhost:8080/signup
-
-app.post('/signup', async (request, response) => {
-    try {
-        const { email, senhaDigitada } = request.body;
-
-        if (!email || email.trim() === "") {
-            return response.status(400).json({ mensagem: "Favor inserir um email válido" });
-        }
-    
-        if (!senhaDigitada || Number(senhaDigitada.trim() === "")) {
-            return response.status(400).json({ mensagem: "Favor inserir uma senha válida" });
-        }
-    
-        const verificarEmail = admins.find((admin) => admin.email === email);
-    
-        if (verificarEmail) {
-            return response.status(400).json({ mensagem: "Email já cadastrado no nosso banco de dados" });
-        }
-    
-        const senhaCriptografada = await bcrypt.hash(senhaDigitada, 10);
-    
-        const Administrador = {
-            id: proxAdmin,
-            email: email, 
-            senhaDigitada: senhaCriptografada 
-        };
-        
-        admins.push(Administrador);
-        proxAdmin++;
-    
-        return response.status(201).json({ 
-            mensagem: `Pessoa administradora com email ${email} cadastrada com sucesso!`,
-        });
-            
-    } catch (error) {
-        console.error("Erro ao processar cadastro:", error);
-        return response.status(500).json({ mensagem: "Erro interno do servidor." });
-    }
+app.listen(PORT, () => {console.log(`Servidor rodando na porta ${PORT}`);
 });
-  
-  // ------------------- logar uma pessoa usuária -----------------
-  // http://localhost:8080/login
-
-  app.post('/login', async (request, response) => {
-    try {
-        const { email, senha } = request.body;
-  
-        if (!email || email.trim() === "") {
-            return response.status(400).json({ mensagem: 'Favor inserir um email válido' });
-        }      
-
-        if (!senha || senha.trim() === "") {
-            return response.status(400).json({ mensagem: 'Favor inserir uma senha válida' });
-        }
-
-        const admin = admins.find(admin => admin.email === email);
-
-        if (!admin) {
-            return response.status(400).json({ mensagem: 'Credenciais inválidas' });
-        }
-
-        const senhaMatches = await bcrypt.compare(senha, admin.senhaDigitada);
-    
-        if (!senhaMatches) {
-            return response.status(400).json({ mensagem: 'Credenciais inválidas' });
-        }
-
-        return response.status(200).json({
-            mensagem: `Pessoa com email ${email} foi logada com sucesso! Seja bem-vinde!`,
-            email: email,
-            loginStatus: 'Success'
-        });
-
-    } catch (error) {
-        console.error("Erro ao processar login:", error);
-        return response.status(500).json({ mensagem: "Erro interno do servidor." });
-    }
-});
-
-  app.listen(PORT, () => {console.log(`Servidor rodando na porta ${PORT}`);
-  });
 
