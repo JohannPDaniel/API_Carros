@@ -52,7 +52,7 @@ Para acessar a documentação da API clique aqui
 ### Técnologias usadas na API:
 
 <div style="display: flex; gap: 10px;">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black" style="width: 110px; height: auto;" alt="JavaScript" title="JavaScript">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black" style="width: 110px; height: 32px;" alt="JavaScript" title="JavaScript">
   
   <img src="https://img.shields.io/badge/Node.js-5FA04E.svg?style=for-the-badge&logo=nodedotjs&logoColor=white" style="width: 110px; height: 32px;" alt="Node.js" title="NodeJS">
   
